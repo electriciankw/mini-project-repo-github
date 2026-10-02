@@ -16,7 +16,7 @@ const sizePanel = document.getElementById("size-panel");
 const sizeRange = document.getElementById("size-range");
 const sizeOutput = document.getElementById("size-output");
 
-// Fitur: menu hamburger (event click)
+// Fitur: menu hamburger
 function setMenu(open) {
   navMenu.classList.toggle("is-open", open);
   menuToggle.setAttribute("aria-expanded", String(open));
@@ -28,13 +28,13 @@ navMenu.addEventListener("click", function (event) {
   if (event.target.tagName === "A") setMenu(false);
 });
 
-// Fitur: switch mode terang/gelap (event click)
+// Fitur: switch mode terang/gelap
 themeToggle.addEventListener("click", function () {
   const dark = root.classList.toggle("dark");
   themeToggle.setAttribute("aria-checked", String(dark));
 });
 
-// Fitur: tampil/sembunyikan spesifikasi dan ganti tampilan info (event click, delegasi)
+// Fitur: tampil/sembunyikan spesifikasi dan ganti tampilan info
 function toggleDetail(button) {
   const detail = document.getElementById(button.getAttribute("aria-controls"));
   const willOpen = detail.hidden;
@@ -62,7 +62,7 @@ productGrid.addEventListener("click", function (event) {
   else if (tab) switchTab(tab);
 });
 
-// Fitur: cari dan filter produk (event input & change)
+// Fitur: cari dan filter produk
 function filterProducts() {
   const keyword = searchInput.value.trim().toLowerCase();
   const category = categoryFilter.value;
@@ -80,10 +80,6 @@ searchInput.addEventListener("input", filterProducts);
 categoryFilter.addEventListener("change", filterProducts);
 
 // Fitur: pengatur ukuran teks lewat knob + slider
-// - sizeKnob: event click -> buka/tutup panel (ubah atribut hidden & aria-expanded)
-// - sizeRange: event input -> ubah font-size <html> (semua ukuran rem ikut berubah),
-//   teks persen pada <output>, dan sudut putar jarum knob
-// - document: event keydown (Escape) -> tutup panel
 const SIZE_LEVELS = [90, 100, 115, 130, 150];
 
 function applySize(level) {
@@ -112,7 +108,7 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// Event load: isi tahun footer dan status awal
+// Event load
 window.addEventListener("load", function () {
   document.getElementById("tahun").textContent = new Date().getFullYear();
   applySize(Number(sizeRange.value));
